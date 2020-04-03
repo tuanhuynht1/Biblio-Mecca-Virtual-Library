@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/tuanhuynht1/Biblio-Mecca-Virtual-Library#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "ejs": "^2.5.2",
     "express": "^4.17.1",
     "json-loader": "^0.5.7",
