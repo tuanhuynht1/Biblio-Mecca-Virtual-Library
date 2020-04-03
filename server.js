@@ -9,8 +9,8 @@ server.listen(port, () => console.log(`Listening to PORT: ${port}`));
 // use ejs template engine to render html, located in ./views/ 
 server.set('view engine','ejs');
 
-// declare middlewares
+// declare middlewares (code that executes between http request and response)
 server.use(express.static('public'));  // serve static files (html, bundles, and css) in ./public/
 
 
-server.get('/', (req,res) => res.sendFile(path.join(__dirname,'/public/home.html')));
+server.get('/', (req,res) => res.render('index'));
