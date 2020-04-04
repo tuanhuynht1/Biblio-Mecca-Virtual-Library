@@ -83,4 +83,4 @@ const NavBar = () => {
   );
 };
 
-export { HomePage, NavBar };
+export default HomePage;
