@@ -1,20 +1,5 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import SearchForm from "./SearchForm";
-import Header from "./Header";
+import HomePage from "./HomePage";
 
-// class HomePage extends Component {
-//   render() {
-//     return(
-
-//     )
-//   }
-// };
-
-render(
-  <div>
-    <Header />
-    <SearchForm />
-  </div>,
-  document.getElementById("root")
-);
+render(<HomePage />, document.getElementById("root"));
