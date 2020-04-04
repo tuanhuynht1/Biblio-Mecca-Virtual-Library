@@ -185,7 +185,7 @@ class PostgresInterface {
                 WHERE Username = '${username}';
             `);
       await this.close(client);
-      return rows;
+      return rows[0];
     } catch (e) {
       console.log(e);
       await this.close(client);

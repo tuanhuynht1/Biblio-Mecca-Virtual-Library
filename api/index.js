@@ -33,4 +33,11 @@ router.get("/authenticateLogin/:user/:pass", async (req, res) => {
   res.send(results);
 });
 
+router.get("/viewPatronInfo/:user", async (req, res) => {
+  const { user } = req.params;
+  const results = await pgi.viewPatronInfo(user);
+  console.log(results);
+  res.send(results);
+});
+
 export default router;

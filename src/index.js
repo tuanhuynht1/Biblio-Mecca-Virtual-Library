@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Home from "./Home";
 import NavBar from "./components/NavBar";
+import Home from "./Home";
+import Login from "./Login";
 
 // this file is the root of the React app
 // it will route every page and determine what main component to render
@@ -29,6 +30,7 @@ class App extends Component {
 
   render() {
     const { accountInfo } = this.state;
+    console.log(accountInfo);
     // will route to other containers (Home, SignUp, Login, Account)
     return (
       <div>
@@ -37,7 +39,7 @@ class App extends Component {
           patronView={accountInfo != null}
           setAccountInfo={this.setAccountInfo.bind(this)}
         />
-        <Home />
+        <Login setAccountInfo={this.setAccountInfo.bind(this)} />
       </div>
     );
   }
