@@ -130,7 +130,7 @@ class PostgresInterface {
         const { rows } = await client.query(`
                     SELECT DISTINCT title,author,category,ISBN,format
                     FROM bookinfo
-                    WHERE lower(${by}) LIKE '${search.toLowerCase()}%'
+                    WHERE lower(${by}) LIKE '%${search.toLowerCase()}%'
                     ORDER BY title;
                 `);
         await this.close(client);
