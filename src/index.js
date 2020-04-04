@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import HomePage from "./HomePage";
-import NavBar from "./NavBar";
+import NavBar from "./components/NavBar";
 
 // this file is the root of the React app
 // it will route every page and determine what main component to render

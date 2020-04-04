@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import SearchForm from "./SearchForm";
-import Header from "./Header";
+import SearchForm from "./components/SearchForm";
+import Header from "./components/Header";
 
 class HomePage extends Component {
   state = {
@@ -29,58 +29,5 @@ class HomePage extends Component {
     );
   }
 }
-
-const NavBar = () => {
-  return (
-    <nav className="navbar navbar-inverse">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <a className="navbar-brand" href="home.html">
-            The Biblio Mecca
-          </a>
-        </div>
-        <ul className="nav navbar-nav">
-          <li className="dropdown">
-            <a className="dropdown-toggle" data-toggle="dropdown">
-              General Info<span className="caret"></span>
-            </a>
-            <ul className="dropdown-menu">
-              <li>
-                <a href="policies.html">Policies and Procedure</a>
-              </li>
-              <li>
-                <a href="address.html">Address & Visiting</a>
-              </li>
-              <li>
-                <a href="aboutUs.html">About Us</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul className="nav navbar-nav navbar-right">
-          <li>
-            <a href="signup.html">
-              <span className="glyphicon glyphicon-user"></span> Patron Sign Up
-            </a>
-          </li>
-          <li className="dropdown">
-            <a className="dropdown-toggle" data-toggle="dropdown" href="#">
-              <span className="glyphicon glyphicon-log-in"></span> Login
-              <span className="caret"></span>
-            </a>
-            <ul className="dropdown-menu">
-              <li>
-                <a href="login.html">As Patron</a>
-              </li>
-              <li>
-                <a href="login.html">As Librarian</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  );
-};
 
 export default HomePage;
