@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import GenInfoMenu from "./GenInfoMenu";
-import SignUpButton from "./SignUpButton";
-import LoginButton from "./LoginButton";
+import {
+  LoginButton,
+  LogoutButton,
+  SignUpButton,
+  AccountInfoButton,
+} from "./NavBarButtons";
 
-const NavBar = () => {
+const NavBar = ({ patronView, setAccountInfo }) => {
+  console.log(patronView);
   return (
     <nav className="navbar navbar-inverse">
       <div className="container-fluid">
@@ -14,12 +19,12 @@ const NavBar = () => {
         </div>
 
         <ul className="nav navbar-nav">
-          <GenInfoMenu />
+          {patronView ? <AccountInfoButton /> : <div></div>}
         </ul>
 
         <ul className="nav navbar-nav navbar-right">
-          <SignUpButton />
-          <LoginButton />
+          {patronView ? <div></div> : <SignUpButton />}
+          {patronView ? <LogoutButton /> : <LoginButton />}
         </ul>
       </div>
     </nav>

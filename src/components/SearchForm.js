@@ -6,7 +6,7 @@ import BookList from "./BookList";
 class SearchForm extends Component {
   // takes the changebooklist function from homepage component and update on user input
   onChangeHandler(event) {
-    const { changeBookList } = this.props;
+    const { updateBookList } = this.props;
     const input = document.getElementById("search-for");
     // checks for user input
     if (input && input.value !== "") {
@@ -17,21 +17,21 @@ class SearchForm extends Component {
       axios
         .get(`/api/searchBook/${search}/${by}`)
         .then((res) => {
-          // console.log(res.data);
+          console.log(res.data);
           // update booklist in homepage component
-          changeBookList(res.data);
+          updateBookList(res.data);
         })
         .catch(console.error);
     } else {
       // return empty list if input provided
-      changeBookList([]);
+      updateBookList([]);
     }
   }
 
   // same as onChangeHandler but with the search button
   onClickHandler(event) {
     event.preventDefault();
-    const { changeBookList } = this.props;
+    const { updateBookList } = this.props;
 
     const input = document.getElementById("search-for");
     if (input && input.value !== "") {
@@ -42,25 +42,25 @@ class SearchForm extends Component {
         .get(`/api/searchBook/${search}/${by}`)
         .then((res) => {
           // console.log(res.data);
-          changeBookList(res.data);
+          updateBookList(res.data);
         })
         .catch(console.error);
     } else if (input.value === "") {
-      console.log("EMPTY", document.getElementById("search-for").value);
+      // console.log("EMPTY", document.getElementById("search-for").value);
       axios
         .get(`/api/browseBooks`)
         .then((res) => {
-          console.log(res.data);
-          changeBookList(res.data);
+          // console.log(res.data);
+          updateBookList(res.data);
         })
         .catch(console.error);
     } else {
-      changeBookList([]);
+      updateBookList([]);
     }
   }
 
   render() {
-    const { data } = this.props;
+    const { booklist } = this.props;
     return (
       <div>
         <form className="search">
@@ -89,7 +89,7 @@ class SearchForm extends Component {
         <br />
         <br />
         {/* render nothing if booklist is empty, pass results to booklist component to render */}
-        {data.length == 0 ? <div></div> : <BookList results={data} />}
+        {/* {booklist.length == 0 ? <div></div> : <BookList results={booklist} />} */}
       </div>
     );
   }

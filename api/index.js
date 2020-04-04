@@ -26,4 +26,11 @@ router.get("/searchBook/:search/:by", async (req, res) => {
   res.send(results);
 });
 
+router.get("/authenticateLogin/:user/:pass", async (req, res) => {
+  const { user, pass } = req.params;
+  const results = await pgi.authenticateLogin("patron", user, null, pass);
+  console.log(results);
+  res.send(results);
+});
+
 export default router;
