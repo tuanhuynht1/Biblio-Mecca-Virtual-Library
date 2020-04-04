@@ -96,6 +96,21 @@ class PostgresInterface {
     }
     await this.close(client);
   }
+  async browseBook() {
+    const client = await this.connect();
+    try {
+      const { rows } = await client.query(`
+      SELECT DISTINCT title,author,category,ISBN,format
+      FROM bookinfo
+      ORDER BY title;
+      `);
+      await this.close(client);
+      return rows;
+    } catch (error) {
+      await this.close(client);
+      console.log(error);
+    }
+  }
   /* ------------------------------------------------------------------------------------------------------------------- */
   async searchBook(search, by) {
     // Add DISTINCT and remove join between bookinfo and books

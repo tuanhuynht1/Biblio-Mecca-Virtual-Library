@@ -9,6 +9,11 @@ router.get("/", (req, res) => {
   res.send(["hello", "world"]);
 });
 
+router.get("/browseBooks", async (req, res) => {
+  const data = await pgi.browseBook();
+  res.send(data);
+});
+
 router.get("/viewAll/:table", async (req, res) => {
   const data = await pgi.viewAll(req.params.table);
   res.send({ data: data });

@@ -45,6 +45,15 @@ class SearchForm extends Component {
           changeBookList(res.data);
         })
         .catch(console.error);
+    } else if (input.value === "") {
+      console.log("EMPTY", document.getElementById("search-for").value);
+      axios
+        .get(`/api/browseBooks`)
+        .then((res) => {
+          console.log(res.data);
+          changeBookList(res.data);
+        })
+        .catch(console.error);
     } else {
       changeBookList([]);
     }
