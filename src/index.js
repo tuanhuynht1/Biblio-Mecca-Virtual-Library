@@ -8,7 +8,7 @@ const Header = ({ message = "The Biblio Mecca" }) => {
 
 class SearchForm extends Component {
   state = {
-    results: [],
+    data: [],
   };
 
   onClickHandler(event) {
@@ -21,14 +21,14 @@ class SearchForm extends Component {
       .then((res) => {
         // console.log(res.data);
         this.setState({
-          results: res.data,
+          data: res.data,
         });
       })
       .catch(console.error);
   }
 
   render() {
-    const { results } = this.state;
+    const { data } = this.state;
     return (
       <div>
         <form className="search">
@@ -52,19 +52,68 @@ class SearchForm extends Component {
         <br />
         <br />
 
-        {results.length == 0 ? (
-          <div></div>
-        ) : (
-          results.map((book) => (
-            <div className="search-entry" key={book.isbn}>
-              {book.title}, {book.author}, {book.format}, {book.isbn}
-            </div>
-          ))
-        )}
+        {data.length == 0 ? <div></div> : <ResultsTable results={data} />}
       </div>
     );
   }
 }
+
+const ResultsTable = ({ results = [] }) => {
+  console.log(results);
+  return results.length == 0 ? (
+    <div></div>
+  ) : (
+    <div style={{ overflowY: "scroll" }}>
+      <table>
+        <tbody>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Format</th>
+          </tr>
+          {results.map((book) => (
+            <tr key={book.isbn} className="search-entry">
+              <td>{book.title}</td>
+              <td>{book.author}</td>
+              <td>{book.isbn}</td>
+              <td>{book.format}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+// const ResultsTable = () => {
+//   return (
+//     <div style={{ textAlign: "center", overflowY: "scroll" }}>
+//       <table>
+//         <tbody>
+//           <tr>
+//             <th>First Name</th>
+//             <th>Last Name</th>
+//             <th>Points</th>
+//             <th>Points</th>
+//           </tr>
+//           <tr>
+//             <td>Jill</td>
+//             <td>Smith</td>
+//             <td>50</td>
+//             <td>50</td>
+//           </tr>
+//           <tr>
+//             <td>Jill</td>
+//             <td>Smith</td>
+//             <td>50</td>
+//             <td>50</td>
+//           </tr>
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
 
 render(
   <div>
