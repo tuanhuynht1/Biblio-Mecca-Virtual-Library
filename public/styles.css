@@ -195,6 +195,18 @@ form.lib .labelL {
   height: 68px;
 }
 
+.search-entry {
+  color: #000000;
+  margin: 1em;
+  border: 1px solid #aaafff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.search-entry:hover {
+  background-color: #c0f0c4;
+}
+
 legend {
   color: #fff;
   background: #000;

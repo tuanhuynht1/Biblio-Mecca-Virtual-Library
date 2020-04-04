@@ -5,15 +5,19 @@ import { connectionString } from "../config";
 const router = express.Router();
 const pgi = new PostgresInterface(connectionString);
 
-router.get("/:table", async (req, res) => {
+router.get("/", (req, res) => {
+  res.send(["hello", "world"]);
+});
+
+router.get("/viewAll/:table", async (req, res) => {
   const data = await pgi.viewAll(req.params.table);
   res.send({ data: data });
 });
 
-router.get("/:search/:by", async (req, res) => {
+router.get("/searchBook/:search/:by", async (req, res) => {
   const { search, by } = req.params;
   const results = await pgi.searchBook(search, by);
-  console.log(results);
+  console.table(results);
   res.send(results);
 });
 
