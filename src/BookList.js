@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Book from "./Book";
 
 const BookList = ({ results = [] }) => {
   return results.length == 0 ? (
@@ -14,12 +15,7 @@ const BookList = ({ results = [] }) => {
             <th>Format</th>
           </tr>
           {results.map((book) => (
-            <tr key={book.isbn} className="search-entry">
-              <td>{book.title}</td>
-              <td>{book.author}</td>
-              <td>{book.isbn}</td>
-              <td>{book.format}</td>
-            </tr>
+            <Book book={book} key={book.isbn} />
           ))}
         </tbody>
       </table>
